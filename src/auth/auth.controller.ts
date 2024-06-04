@@ -24,10 +24,6 @@ export class AuthController {
   ) {
     const jwt = await this.authService.signIn(signInDto.id, signInDto.password);
 
-    res.setHeader('Access-Control-Allow-Origin', process.env.BASE_URL);
-    res.setHeader('Access-Control-Allow-Methods', 'POST');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
     res.cookie('jwt', jwt, {
       sameSite: 'none',
       secure: true,
