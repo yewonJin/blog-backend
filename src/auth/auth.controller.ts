@@ -25,6 +25,7 @@ export class AuthController {
     const jwt = await this.authService.signIn(signInDto.id, signInDto.password);
 
     res.cookie('jwt', jwt, {
+      domain: '.vercel.app',
       sameSite: 'none',
       secure: true,
       maxAge: 60 * 60 * 1000,
